@@ -27,7 +27,7 @@ SELECT DISTINCT q.user_id,\
   LEFT JOIN purchase AS 'p'\
     ON p.user_id = h.user_id\
 LIMIT 10;\
-\'97 Purchase by number_of_pairs\
+--Purchase by number_of_pairs
 WITH funnels AS (SELECT DISTINCT q.user_id,\
      h.user_id IS NOT NULL AS 'is_home_try_on',\
      h.number_of_pairs AS 'number_of_pairs',\
@@ -40,7 +40,7 @@ WITH funnels AS (SELECT DISTINCT q.user_id,\
 SELECT DISTINCT number_of_pairs, COUNT(DISTINCT user_id), SUM(is_purchase)\
 FROM funnels\
 GROUP BY 1;\
-\'97 Purchase by is_home_try_on\
+--Purchase by is_home_try_on
 WITH funnels AS (SELECT DISTINCT q.user_id,\
      h.user_id IS NOT NULL AS 'is_home_try_on',\
      h.number_of_pairs AS 'number_of_pairs',\
@@ -66,7 +66,7 @@ SELECT DISTINCT color, COUNT(DISTINCT user_id)\
 FROM purchase\
 GROUP BY 1\
 ORDER BY 2 DESC;\
-\'97Price\
+--Price
 SELECT DISTINCT price, COUNT(DISTINCT user_id)\
 FROM purchase\
 GROUP BY 1\
